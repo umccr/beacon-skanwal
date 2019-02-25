@@ -27,6 +27,7 @@ curl "https://avt0y2mcq9.execute-api.ap-southeast-2.amazonaws.com/prod/query?ass
 
 ### Pointers
 
+- [Beacon network](https://beacon-network.org/#/) - a global search engine for genetic mutations, provides a nice UI for searching variants across world's public beacons. In addition, it allows to limit the search to organizations of interest.   
 - Peformance comparison between serverless abd traditional beacons
 - Try loading more data into the serverless beacon
 - Create some (interesting and meaningful) queries
