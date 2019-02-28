@@ -19,6 +19,28 @@ curl --header "Content-Type: application/json" \
   https://avt0y2mcq9.execute-api.ap-southeast-2.amazonaws.com/prod/submit
 ```
 
+**Observations**
+
+Tried loading more data (one of the Avner sample) to the serverless beacon using:
+
+```
+curl --header "Content-Type: application/json" \
+--request POST \
+--data '{"id":"t2","name":"test2","assemblyId":"GRCh37","vcfLocations": ["s3://umccr-primary-data-prod/Avner/2018-12-05/final/CCR180136_WH18F001P025/2016_249_18_WH_P025_1-sv-prioritize-manta.vcf.gz"]}' \
+https://avt0y2mcq9.execute-api.ap-southeast-2.amazonaws.com/prod/submit
+```
+
+The command did not return any messgae (success/error), which might be an issue as only after querying, the user can find out if the data is successfully loaded. 
+
+And to copy data from dev bucket, used:
+
+```
+curl --header "Content-Type: application/json" \
+> --request POST \
+> --data '{"id":"t3","name":"test3","assemblyId":"GRCh37","vcfLocations": ["s3://umccr-primary-data-dev/test_projects/beacon_test_data/2016_249_18_WH_P025_1-sv-prioritize-manta.vcf.gz"]}' \
+> https://avt0y2mcq9.execute-api.ap-southeast-2.amazonaws.com/prod/submit
+```
+
 ### Example query
 
 ```
