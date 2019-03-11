@@ -47,6 +47,14 @@ curl --header "Content-Type: application/json" \
 curl "https://avt0y2mcq9.execute-api.ap-southeast-2.amazonaws.com/prod/query?assemblyId=hg19;referenceName=1;referenceBases=C;alternateBases=T;start=10491;end=10491;includeDatasetResponses=HIT"
 ```
 
+**Range queries**
+
+Deletion which starts somewhere between positions 5146261 and 5146265, and ends between 5146262 and 5374408. 
+
+```curl "https://74palqdmj8.execute-api.ap-southeast-2.amazonaws.com/prod/query?assemblyId=GRCh37;referenceName=1;referenceBases=AT;startMin=5146261;startMax=5146265;endMin=5146262;endMax=5374408;variantType=DEL;includeDatasetResponses=HIT"```
+
+
+
 ### Pointers
 
 - [Beacon network](https://beacon-network.org/#/) - a global search engine for genetic mutations, provides a nice UI for searching variants across world's public beacons. In addition, it allows to limit the search to organizations of interest.   
