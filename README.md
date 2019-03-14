@@ -49,7 +49,7 @@ curl "https://avt0y2mcq9.execute-api.ap-southeast-2.amazonaws.com/prod/query?ass
 
 **Range queries**
 
-Deletion which starts somewhere between positions 5146261 and 5146265, and ends between 5146262 and 5374408. 
+Deletion which starts somewhere between positions 5146261 and 5146265, and ends between 5146262 and 5374408, on chromosome 1. 
 
 ```curl "https://74palqdmj8.execute-api.ap-southeast-2.amazonaws.com/prod/query?assemblyId=GRCh37;referenceName=1;referenceBases=AT;startMin=5146261;startMax=5146265;endMin=5146262;endMax=5374408;variantType=DEL;includeDatasetResponses=HIT"```
 
@@ -61,6 +61,8 @@ Deletion which starts somewhere between positions 5146261 and 5146265, and ends 
 - Peformance comparison between serverless abd traditional beacons
 - Try loading more data into the serverless beacon
 - Create some (interesting and meaningful) queries
+- Is providing a referenceBases mandatory? I get an error, when not specifying 
+	- That's an issue as it won't then be possible to write queries like are there any SNVs FROM this position TO this one. 
 
  
 
