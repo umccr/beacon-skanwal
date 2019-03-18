@@ -49,11 +49,23 @@ curl "https://avt0y2mcq9.execute-api.ap-southeast-2.amazonaws.com/prod/query?ass
 
 **Range queries**
 
-Deletion which starts somewhere between positions 5146261 and 5146265, and ends between 5146262 and 5374408, on chromosome 1. 
+- Deletion which starts somewhere between positions 5146261 and 5146265, and ends between 5146262 and 5374408, on chromosome 1. 
 
 ```curl "https://74palqdmj8.execute-api.ap-southeast-2.amazonaws.com/prod/query?assemblyId=GRCh37;referenceName=1;referenceBases=AT;startMin=5146261;startMax=5146265;endMin=5146262;endMax=5374408;variantType=DEL;includeDatasetResponses=HIT"```
 
+- In the current test vcf (`2016_249_18_WH_P016_2-ensemble-annotated.vcf.gz`), there are a couple of deletions at positions `5146262` and `5374408` on chromosome 1.
 
+To check if it's possible to pickup these two deletions in the test dataset by specifying a range value and `N` as a reference, I tested the following query:
+
+```
+curl "https://74palqdmj8.execute-api.ap-southeast-2.amazonaws.com/prod/query?assemblyId=GRCh37;referenceName=1;referenceBases=N;startMin=5146260;startMax=5374411;endMin=5146261;endMax=5374414;variantType=DEL;includeDatasetResponses=HIT"
+```
+
+It successfully returned the following  result:
+
+```
+{"beaconId": "org.umccr.beacon", "apiVersion": null, "alleleRequest": {"assemblyId": "GRCh37", "endMax": 5374414, "endMin": 5146261, "includeDatasetResponses": "HIT", "referenceBases": "N", "referenceName": "1", "startMax": 5374411, "startMin": 5146260, "variantType": "DEL", "datasetIds": null}, "exists": true, "datasetAlleleResponses": [{"datasetId": "t4", "exists": true, "frequency": 0.25, "variantCount": 2, "callCount": 2, "sampleCount": 2, "note": null, "externalUrl": null, "info": null, "error": null}]}
+```
 
 ### Pointers
 
@@ -62,7 +74,7 @@ Deletion which starts somewhere between positions 5146261 and 5146265, and ends 
 - Try loading more data into the serverless beacon
 - Create some (interesting and meaningful) queries
 - Is providing a referenceBases mandatory? I get an error, when not specifying 
-	- That's an issue as it won't then be possible to write queries like are there any SNVs FROM this position TO this one. 
+	- It's possible to use `N` as a referenceBases value, specifically useful for range queries. 
 
  
 
